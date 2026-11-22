@@ -3,75 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="1936 Manhattan’ında bir dartın yolculuğunu takip eden, kaydırmayla ilerleyen sinematik bir web deneyimi.">
-  <meta name="theme-color" content="#151210">
+  <meta name="theme-color" content="#100e0c">
+  <meta name="description" content="1936 Manhattan’ında bir dartın peşinden ilerleyen 29 saniyelik sinematik kısa film.">
   <meta property="og:title" content="New York in Flight">
   <meta property="og:description" content="Bir dartın peşinde 1936 Manhattan’ı.">
-  <meta property="og:image" content="https://fatihyaylacimk.github.io/new-york-in-flight/assets/scenes/launch.webp">
+  <meta property="og:image" content="https://fatihyaylacimk.github.io/new-york-in-flight/assets/film/first-frame.webp">
   <title>New York in Flight</title>
   <link rel="icon" href="assets/icon.png" type="image/png">
-  <link rel="preload" href="assets/scenes/launch.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/film/first-frame.webp" as="image" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <script src="film.js" defer></script>
 </head>
 <body>
-  <main class="flight" id="flight">
-    <section class="stage" id="stage" aria-label="New York in Flight yolculuğu" tabindex="-1">
-      <div class="picture" aria-hidden="true">
-        <img class="cover" id="cover" src="assets/scenes/launch.webp" alt="" width="1672" height="941" fetchpriority="high">
-        <canvas id="screen"></canvas>
-      </div>
-      <div class="gradation" aria-hidden="true"></div>
+  <main class="cinema" id="cinema" aria-label="New York in Flight">
+    <video id="picture" class="picture" playsinline muted controls tabindex="0" preload="metadata"
+      poster="assets/film/first-frame.webp" width="1920" height="1080"
+      aria-label="1936 Manhattan’ında dartın yolculuğu">
+      <source src="assets/film/new-york-in-flight.mp4" type="video/mp4">
+      Tarayıcın filmi gömülü oynatamıyor.
+      <a href="assets/film/new-york-in-flight.mp4">Filmi MP4 olarak aç.</a>
+    </video>
 
+    <div class="interface" id="interface" hidden>
+      <div class="shade" aria-hidden="true"></div>
       <header class="masthead">
-        <button class="brand interactive" id="home" type="button" aria-label="New York in Flight, başa dön">
-          <span class="mark" aria-hidden="true"></span>
-          <span class="brand-name" lang="en">New York<br>in Flight</span>
-        </button>
-        <button class="playback interactive" id="playback" type="button" aria-label="Yolculuğu oynat">
-          <span class="play-symbol" aria-hidden="true"></span>
-          <span id="playback-label">Oynat</span>
-        </button>
+        <h1 lang="en">New York <em>in Flight</em></h1>
+        <p>Manhattan, 1936</p>
       </header>
 
-      <div class="intro" id="intro">
-        <p class="place">Manhattan, 1936</p>
-        <h1 lang="en">New York <em>in Flight</em></h1>
-        <p class="intro-copy">Bir dartın peşinde 1930’ların New York sokaklarına dal.</p>
-        <button class="primary interactive" id="begin" type="button">Yolculuğa başla</button>
-        <noscript><p>Yolculuğu izlemek için tarayıcında JavaScript’i etkinleştir.</p></noscript>
+      <button class="center-play" id="center-play" type="button" aria-label="Filmi oynat" title="Filmi oynat">
+        <span class="symbol symbol-play" aria-hidden="true"></span>
+      </button>
+
+      <p class="status" id="status" role="status" hidden></p>
+
+      <div class="controls" role="group" aria-label="Film kontrolleri">
+        <label class="visually-hidden" for="seek">Film süresi</label>
+        <input id="seek" class="seek" type="range" min="0" max="29" step="0.01" value="0"
+          aria-valuetext="0:00, Atış">
+        <div class="controls-row">
+          <button class="tool" id="play" type="button" aria-label="Filmi oynat" title="Filmi oynat">
+            <span class="symbol symbol-play" aria-hidden="true"></span>
+          </button>
+          <div class="time">
+            <span id="elapsed">0:00</span>
+            <span aria-hidden="true">/</span>
+            <span id="duration">0:29</span>
+          </div>
+          <span class="now-showing" id="chapter" aria-hidden="true">Atış</span>
+          <div class="view-controls">
+            <button class="tool" id="sound" type="button" aria-label="Sesi aç" title="Sesi aç">
+              <span class="symbol symbol-sound" aria-hidden="true"></span>
+              <span class="tool-label" id="sound-label">Sesi aç</span>
+            </button>
+            <button class="tool" id="framing" type="button" aria-label="Tam kadrajı göster"
+              title="Tam kadrajı göster" aria-pressed="false">
+              <span class="symbol symbol-frame" aria-hidden="true"></span>
+            </button>
+            <button class="tool" id="fullscreen" type="button" aria-label="Tam ekran" title="Tam ekran">
+              <span class="symbol symbol-fullscreen" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
       </div>
-
-      <div class="caption" id="caption" hidden>
-        <div aria-live="polite" aria-atomic="true">
-          <p class="place" id="scene-place"></p>
-          <h2 id="scene-title"></h2>
-          <p id="scene-description"></p>
-        </div>
-        <button class="primary" id="restart" type="button" hidden>Yeniden izle</button>
-      </div>
-
-      <p class="load-status interactive" id="load-status" role="status" hidden></p>
-
-      <footer class="console interactive">
-        <div class="console-info">
-          <span class="scroll-hint"><span aria-hidden="true" class="scroll-icon"></span> Kaydırarak ilerle</span>
-          <span class="timecode" aria-hidden="true"><span id="time">00:00</span><span> / 00:28</span></span>
-        </div>
-        <div class="scrubber">
-          <div class="rail" aria-hidden="true"><span id="rail-fill"></span></div>
-          <input type="range" id="seek" min="0" max="1000" value="0" aria-label="Yolculuğun konumu" aria-valuetext="00:00, Atış">
-        </div>
-        <nav class="chapters" aria-label="Sahneler">
-          <button type="button" data-scene="0" aria-current="step">Atış</button>
-          <button type="button" data-scene="1">Cadde</button>
-          <button type="button" data-scene="2">Pazar</button>
-          <button type="button" data-scene="3">Tramvay</button>
-          <button type="button" data-scene="4">Ara sokak</button>
-          <button type="button" data-scene="5">Hedef</button>
-        </nav>
-      </footer>
-    </section>
+    </div>
   </main>
 </body>
 </html>
