@@ -278,7 +278,7 @@ button:focus-visible, input:focus-visible {
 }
 
 @media (orientation: portrait) {
-  .cinema:not([data-wide]) .picture { object-fit: cover; object-position: 49% center; }
+  .cinema:not([data-wide]) .picture { object-fit: cover; object-position: center; }
 }
 @media (orientation: landscape) {
   #framing { display: none; }

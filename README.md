@@ -2,7 +2,7 @@
 
 [Filmi izle](https://fatihyaylacimk.github.io/new-york-in-flight/)
 
-1936 Manhattan’ında bir dartı takip eden 29 saniyelik kısa film. Cadde, iki balon, tramvay, ateş çemberi, taksi, çiçek pazarı ve hedef sahneleri 1080p ve 60 kare/saniye ile oynatılır. Dart atıştan hedefin merkezine kadar düz ilerler. Balonların patlaması dartın temas anıyla eşleşir. Filmde özgün caz müziği ve sahne sesleri vardır.
+1936 Manhattan’ında bir dartı takip eden 29 saniyelik kısa film. Cadde, iki balon, tramvay, ateş çemberi, taksi, çiçek pazarı ve hedef sahneleri 1080p ve 60 kare/saniye ile oynatılır. Kamera dartı arkadan takip eder. Dart kadrajın merkezinden sokağın derinliğine doğru ilerler. Balonların patlaması dartın temas anıyla eşleşir. Filmde özgün caz müziği ve sahne sesleri vardır.
 
 Film sessiz başlar. Sesi açmak için görüntüye dokunup ses düğmesini kullan. Zaman çizelgesi, fare tekerleği, dikey kaydırma ve sağ/sol ok tuşlarıyla filmde ilerleyebilirsin. Portre ekranda tam kadrajı açabilirsin.
 
